@@ -47,16 +47,9 @@ ova-14-teoria-informacion/
 
 Abre `index.html` directamente en cualquier navegador moderno. No se necesita servidor.
 
-### Desplegar en GitHub Pages
-
-1. Sube los tres archivos (`index.html`, `styles.css`, `main.js`) a un repositorio de GitHub.
-2. Ve a **Settings → Pages**.
-3. En *Source*, selecciona la rama `main` y la carpeta `/ (root)`.
-4. Guarda. GitHub Pages generará la URL pública en unos segundos.
-
 ---
 
-## Tecnologías
+ Tecnologías
 
 - HTML5 semántico
 - CSS3 (variables, Grid, Flexbox, animaciones)
@@ -66,7 +59,7 @@ No usa frameworks ni librerías externas. Sin dependencias npm.
 
 ---
 
-## Referencias bibliográficas
+ Referencias bibliográficas
 
 - Shannon, C. E. (1948). *A Mathematical Theory of Communication*. Bell System Technical Journal, 27(3), 379–423.
 - Cover, T. M., & Thomas, J. A. (2006). *Elements of Information Theory* (2nd ed.). Wiley-Interscience.
@@ -77,7 +70,7 @@ No usa frameworks ni librerías externas. Sin dependencias npm.
 
 ---
 
-## Licencia
+Licencia
 
 Proyecto académico sin fines comerciales.  
 Universidad Simón Bolívar Cúcuta · Teoría en Sistemas 2026
