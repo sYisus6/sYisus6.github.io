@@ -1,0 +1,716 @@
+/* ============================================================
+   OVA #14 — Teoría de la Información
+   styles.css  —  Estilo clásico académico
+   Jesús David Sarmiento Ortiz · Teoría en Sistemas 2026
+   ============================================================ */
+
+/* ── VARIABLES GLOBALES ── */
+:root {
+  --bg:      #f5f0e8;
+  --bg2:     #ede8de;
+  --bg3:     #e2dcd0;
+  --paper:   #faf7f2;
+  --ink:     #1c1a14;
+  --ink2:    #3d3a30;
+  --ink3:    #6b6657;
+  --ink4:    #9a9487;
+  --accent:  #7a1f0e;
+  --accent2: #2b4a7e;
+  --accent3: #3d6b3a;
+  --rule:    #c8c0b0;
+  --mono:    'Source Serif 4', 'Georgia', serif;
+  --sans:    'Libre Baskerville', 'Georgia', serif;
+  --card-r:  2px;
+}
+
+/* ── RESET Y BASE ── */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink2);
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 16px;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--ink);
+  border-bottom: 3px solid var(--accent);
+  padding: 0 2.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 54px;
+}
+.nav-brand {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-style: italic;
+  color: #d4c9b0;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+.nav-links { display: flex; gap: 1.5rem; }
+.nav-links a {
+  color: #a09880;
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: 'Libre Baskerville', Georgia, serif;
+  transition: color .2s;
+}
+.nav-links a:hover { color: #d4c9b0; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+  padding: 80px 2rem 4rem;
+  position: relative;
+  background: var(--ink);
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 39px,
+      rgba(200,192,176,0.07) 39px,
+      rgba(200,192,176,0.07) 40px
+    );
+}
+.hero-grid { display: none; }
+.hero-glow { display: none; }
+
+.badge {
+  display: inline-block;
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #d4c9b0;
+  border: 1px solid #4a4438;
+  padding: 5px 16px;
+  margin-bottom: 2.5rem;
+  position: relative; z-index: 1;
+}
+.hero h1 {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: normal;
+  font-style: italic;
+  line-height: 1.1;
+  color: #f0ead8;
+  position: relative; z-index: 1;
+  margin-bottom: 1rem;
+  letter-spacing: -1px;
+}
+.hero h1 span { color: #c4956a; font-style: normal; }
+.hero-sub {
+  font-size: 1rem;
+  color: #8a8070;
+  max-width: 560px;
+  position: relative; z-index: 1;
+  margin-bottom: 3rem;
+  font-style: italic;
+}
+.hero-stats {
+  display: flex; gap: 4rem;
+  position: relative; z-index: 1;
+  border-top: 1px solid #2e2a22;
+  padding-top: 2rem;
+}
+.hero-stat { text-align: center; }
+.hero-stat .num {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 1.8rem;
+  color: #c4956a;
+  font-style: italic;
+}
+.hero-stat .lbl {
+  font-size: 10px;
+  color: #5a5448;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+}
+.scroll-cue {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  color: #3a3630;
+  font-size: 10px;
+  letter-spacing: 3px;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.scroll-cue::after {
+  content: '';
+  display: block;
+  width: 1px; height: 36px;
+  background: linear-gradient(to bottom, #4a4438, transparent);
+}
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-6px); }
+}
+
+/* ── SECCIONES ── */
+section {
+  padding: 5rem 3rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.section-label {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+h2.section-title {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: normal;
+  font-style: italic;
+  color: var(--ink);
+  margin-bottom: 2.5rem;
+  line-height: 1.2;
+  border-bottom: 2px solid var(--rule);
+  padding-bottom: 0.75rem;
+}
+h2.section-title span { color: var(--accent2); font-style: normal; }
+
+/* ── CONTEXTUALIZACIÓN ── */
+.context-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.ctx-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--accent2);
+  padding: 1.75rem;
+  position: relative;
+}
+.ctx-card::before { display: none; }
+.ctx-card h3 {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: var(--ink);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.3px;
+}
+.ctx-card p { color: var(--ink3); font-size: 0.9rem; }
+.portrait-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+.portrait-avatar {
+  width: 72px; height: 72px;
+  border: 2px solid var(--rule);
+  background: var(--bg3);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 1.4rem;
+  font-style: italic;
+  color: var(--ink3);
+  flex-shrink: 0;
+}
+
+/* ── MARCO TEÓRICO ── */
+.theory-block {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: 2.25rem;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid var(--accent3);
+}
+.theory-block h3 {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: bold;
+  color: var(--ink);
+  margin-bottom: 0.75rem;
+}
+.theory-block p { color: var(--ink3); margin-bottom: 1rem; }
+.formula-box {
+  background: var(--bg3);
+  border-left: 4px solid var(--accent);
+  padding: 1rem 1.5rem;
+  font-family: 'Courier New', monospace;
+  color: var(--accent);
+  font-size: 1.05rem;
+  margin: 1rem 0;
+  letter-spacing: 1px;
+}
+.ref-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-style: italic;
+  background: transparent;
+  color: var(--ink4);
+  border: 1px solid var(--rule);
+  padding: 1px 7px;
+  margin-left: 5px;
+}
+.concept-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+.concept-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-top: 2px solid var(--accent3);
+  padding: 1.4rem;
+  transition: border-top-color .2s, transform .2s;
+}
+.concept-card:hover {
+  border-top-color: var(--accent);
+  transform: translateY(-2px);
+}
+.concept-card .icon { display: none; }
+.concept-card h4 {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 0.88rem;
+  font-weight: bold;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.2px;
+}
+.concept-card p { font-size: 0.82rem; color: var(--ink3); }
+
+/* ── EJEMPLOS ── */
+.examples-tabs { display: flex; gap: 0; margin-bottom: 0; flex-wrap: wrap; border-bottom: 2px solid var(--ink); }
+.tab-btn {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  padding: 8px 18px;
+  border: 1px solid var(--rule);
+  border-bottom: none;
+  background: var(--bg2);
+  color: var(--ink4);
+  cursor: pointer;
+  transition: all .15s;
+  margin-right: -1px;
+}
+.tab-btn.active, .tab-btn:hover {
+  background: var(--ink);
+  color: #f0ead8;
+  border-color: var(--ink);
+}
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+.example-box {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-top: none;
+  padding: 2rem;
+}
+.example-box h3 {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+.example-box p { color: var(--ink3); margin-bottom: 1rem; }
+.example-visual {
+  display: flex; gap: 0.75rem; align-items: center;
+  margin: 1.5rem 0; flex-wrap: wrap;
+}
+.bit-block {
+  width: 42px; height: 42px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Courier New', monospace;
+  font-size: 1.1rem; font-weight: bold;
+  border: 1px solid var(--rule);
+}
+.bit-1 { background: #dde8d8; border-color: var(--accent3); color: var(--accent3); }
+.bit-0 { background: #f0e0dc; border-color: var(--accent); color: var(--accent); }
+
+/* ── EJERCICIOS ── */
+.exercise-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: 2rem;
+  margin-bottom: 1.25rem;
+}
+.exercise-card h3 {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: var(--ink);
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.5rem;
+}
+.exercise-card p { color: var(--ink3); margin-bottom: 1rem; font-size: 0.9rem; }
+.ex-input {
+  width: 100%; padding: 8px 12px;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  color: var(--ink);
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color .2s;
+  margin-bottom: 0.75rem;
+}
+.ex-input:focus { border-color: var(--accent2); }
+.ex-btn {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  padding: 8px 20px;
+  border: 1px solid var(--ink2);
+  background: var(--ink2);
+  color: #f0ead8;
+  cursor: pointer;
+  transition: all .2s;
+}
+.ex-btn:hover { background: var(--accent); border-color: var(--accent); }
+.feedback {
+  margin-top: 1rem; padding: 0.9rem 1.25rem;
+  font-size: 0.875rem; display: none;
+  font-style: italic;
+}
+.feedback.correct { background: #eaf2e8; border-left: 3px solid var(--accent3); color: #2a4a28; }
+.feedback.wrong { background: #f5e8e5; border-left: 3px solid var(--accent); color: #5a1e12; }
+
+/* ── JUEGOS ── */
+.game-container { margin-bottom: 3rem; }
+.game-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--rule); }
+.game-title {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--ink);
+}
+.score-display {
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  color: var(--ink3);
+  border: 1px solid var(--rule);
+  background: var(--bg3);
+  padding: 4px 12px;
+}
+
+/* Juego 1 — Decodificador ASCII */
+#game1-area {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: 1.75rem;
+}
+.cipher-display {
+  font-family: 'Courier New', monospace;
+  font-size: 2.2rem;
+  text-align: center;
+  color: var(--accent2);
+  margin: 1.5rem 0;
+  letter-spacing: 5px;
+  min-height: 56px;
+  background: var(--bg3);
+  border: 1px solid var(--rule);
+  padding: 0.75rem;
+}
+.game-options { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+.game-opt {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 0.88rem;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all .15s;
+  border: 1px solid var(--ink2);
+  background: var(--paper);
+  color: var(--ink2);
+}
+.game-opt:hover { background: var(--ink2); color: #f0ead8; }
+.game-opt.correct-anim { border-color: var(--accent3); background: #eaf2e8; color: #2a4a28; }
+.game-opt.wrong-anim { border-color: var(--accent); background: #f5e8e5; color: #5a1e12; }
+
+/* Juego 2 — Drag & Drop */
+#game2-area {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: 1.75rem;
+}
+.drag-zone {
+  display: flex; gap: 0.75rem; flex-wrap: wrap; min-height: 54px;
+  background: var(--bg2);
+  border: 1px dashed var(--rule);
+  padding: 0.9rem;
+  margin: 0.75rem 0;
+  align-items: center;
+}
+.drag-item {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 0.85rem;
+  background: #fff;
+  border: 1px solid var(--accent2);
+  color: var(--accent2);
+  padding: 6px 14px;
+  cursor: grab;
+  user-select: none;
+  transition: all .15s;
+  font-weight: bold;
+}
+.drag-item:hover { background: var(--accent2); color: #fff; }
+.drag-target {
+  min-width: 90px; min-height: 40px;
+  border: 1px dashed var(--ink4);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem; color: var(--ink4);
+  transition: border-color .2s; padding: 4px;
+}
+.drag-target.drag-over { border-color: var(--accent2); background: #eaeef5; }
+
+/* Juego 3 — Canal con Ruido */
+#game3-area {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: 1.75rem;
+}
+.channel-display {
+  display: flex; gap: 0.4rem; justify-content: center;
+  margin: 1.25rem 0; flex-wrap: wrap;
+}
+.channel-bit {
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Courier New', monospace;
+  font-size: 1.1rem; font-weight: bold;
+  border: 1px solid var(--rule);
+}
+.channel-bit.unknown { background: var(--bg3); color: var(--ink4); }
+.channel-bit.set-1 { background: #dde8d8; border-color: var(--accent3); color: var(--accent3); }
+.channel-bit.set-0 { background: #e8eef5; border-color: var(--accent2); color: var(--accent2); }
+.channel-bit.noise { border-color: var(--accent); background: #f5e8e5; color: var(--accent); animation: flicker .25s infinite; }
+@keyframes flicker { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+/* ── QUIZ ── */
+#quiz-section {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: 2.5rem;
+}
+.quiz-progress-bar-wrap {
+  background: var(--bg3);
+  height: 5px;
+  margin-bottom: 2rem;
+}
+.quiz-progress-bar { height: 5px; background: var(--accent2); transition: width .4s; }
+.question-block { display: none; }
+.question-block.active { display: block; }
+.question-num {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ink4);
+  margin-bottom: 0.5rem;
+}
+.question-text {
+  font-size: 1.05rem;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+.quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+.quiz-opt {
+  background: #fff;
+  border: 1px solid var(--rule);
+  padding: 0.9rem 1.1rem;
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.875rem;
+  color: var(--ink3);
+  transition: all .15s;
+  font-family: 'Libre Baskerville', Georgia, serif;
+}
+.quiz-opt:hover:not(.disabled) { border-color: var(--accent2); background: #eaeef5; color: var(--ink); }
+.quiz-opt.selected-correct { border-color: var(--accent3); background: #eaf2e8; color: #2a4a28; font-style: italic; }
+.quiz-opt.selected-wrong { border-color: var(--accent); background: #f5e8e5; color: #5a1e12; }
+.quiz-opt.reveal-correct { border-color: var(--accent3); }
+.quiz-opt.disabled { cursor: default; pointer-events: none; }
+.quiz-explanation {
+  margin-top: 1rem; padding: 1rem 1.25rem;
+  background: var(--bg2); border-left: 3px solid var(--accent2);
+  font-size: 0.85rem; color: var(--ink3);
+  display: none; font-style: italic;
+}
+.quiz-nav { display: flex; justify-content: flex-end; margin-top: 1.5rem; }
+.q-btn {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 12px;
+  padding: 8px 22px;
+  cursor: pointer;
+  transition: all .2s;
+  border: 1px solid var(--ink2);
+  background: var(--ink2);
+  color: #f0ead8;
+  letter-spacing: 0.5px;
+}
+.q-btn:hover { background: var(--accent2); border-color: var(--accent2); }
+.quiz-result { display: none; text-align: center; padding: 3rem 0; }
+.result-score {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 4rem;
+  color: var(--accent2);
+  font-style: italic;
+  margin-bottom: 0.75rem;
+}
+.result-msg { font-size: 1rem; color: var(--ink3); font-style: italic; }
+.result-bar-wrap {
+  margin: 2rem auto; max-width: 280px;
+  background: var(--bg3); height: 10px;
+}
+.result-bar { height: 10px; background: var(--accent2); transition: width 1s ease; }
+
+/* ── VIDEOS ── */
+.videos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+.video-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-top: 2px solid var(--accent);
+  overflow: hidden;
+  transition: transform .2s;
+}
+.video-card:hover { transform: translateY(-3px); }
+.video-thumb {
+  height: 140px;
+  background: var(--ink);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.video-thumb .play-icon {
+  width: 48px; height: 48px;
+  border: 2px solid #4a4438;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #d4c9b0; font-size: 1.2rem;
+}
+.video-thumb-img {
+  position: absolute; inset: 0;
+  background: rgba(20,18,14,0.85);
+  display: flex; align-items: center; justify-content: center;
+}
+.video-info { padding: 1.1rem; }
+.video-tag {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 10px;
+  color: var(--accent);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+.video-info h4 { font-size: 0.9rem; color: var(--ink); margin-bottom: 0.4rem; line-height: 1.4; font-weight: bold; }
+.video-info p { font-size: 0.78rem; color: var(--ink4); font-style: italic; }
+.video-link { display: block; text-decoration: none; color: inherit; }
+
+/* ── CRÉDITOS ── */
+.credits-section {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: 2.5rem;
+  margin-top: 1.5rem;
+}
+.credits-section h3 {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-weight: bold;
+  color: var(--ink);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+.credits-section p, .credits-section li { color: var(--ink3); font-size: 0.875rem; }
+.credits-section ul { padding-left: 1.5rem; }
+.credits-section li { margin-bottom: 0.5rem; }
+.ref-list { list-style: none; padding: 0; }
+.ref-list li {
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink3);
+  font-size: 0.85rem;
+}
+.ref-list li:last-child { border-bottom: none; }
+
+/* ── FOOTER ── */
+footer {
+  text-align: center; padding: 2.5rem 2rem;
+  border-top: 2px solid var(--ink);
+  background: var(--ink);
+  color: #5a5448; font-size: 0.82rem;
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-style: italic;
+}
+footer span { color: #c4956a; }
+
+/* ── SHANNON DIAGRAM ── */
+.shannon-diagram {
+  display: flex; align-items: center; gap: 0.4rem;
+  margin: 1.5rem 0; overflow-x: auto; padding: 1.25rem;
+  background: var(--bg3);
+  border: 1px solid var(--rule);
+  flex-wrap: nowrap;
+}
+.sh-block {
+  background: #fff;
+  border: 1px solid var(--rule);
+  padding: 0.7rem 1rem;
+  text-align: center;
+  min-width: 90px; flex-shrink: 0;
+}
+.sh-block.highlight { border-color: var(--accent2); border-width: 2px; }
+.sh-block .sh-label {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  color: var(--accent2);
+  margin-bottom: 3px;
+  letter-spacing: 1px;
+}
+.sh-block .sh-name { font-size: 0.75rem; color: var(--ink3); font-style: italic; }
+.sh-arrow { color: var(--ink4); font-size: 1.3rem; flex-shrink: 0; }
+.noise-badge {
+  background: #f5e8e5;
+  border: 1px solid var(--accent);
+  padding: 4px 10px;
+  font-family: 'Courier New', monospace;
+  font-size: 10px; color: var(--accent);
+  align-self: flex-start; flex-shrink: 0;
+  letter-spacing: 0.5px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .context-grid { grid-template-columns: 1fr; }
+  .hero-stats { gap: 2rem; }
+  .quiz-options { grid-template-columns: 1fr; }
+  nav .nav-links { display: none; }
+  .portrait-card { flex-direction: column; text-align: center; }
+  section { padding: 4rem 1.5rem; }
+}
+
+/* ── ANIMACIONES ── */
+.fade-in {
+  opacity: 0; transform: translateY(18px);
+  animation: fadeIn .6s ease forwards;
+}
+@keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+.delay-1 { animation-delay: .1s; }
+.delay-2 { animation-delay: .2s; }
+.delay-3 { animation-delay: .3s; }
+.delay-4 { animation-delay: .4s; }
+
+/* ── MISC ── */
+.entropy-canvas-wrap { text-align: center; margin: 1.5rem 0; }
+#entropy-canvas { border: 1px solid var(--rule); }
